@@ -30,4 +30,5 @@ public class Trip {
     private BigDecimal price_for_child;
     private Integer adultBeds;
     private Integer childBeds;
+    private Boolean isPromoted;
 }

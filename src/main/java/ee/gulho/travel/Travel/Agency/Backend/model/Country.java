@@ -1,5 +1,6 @@
 package ee.gulho.travel.Travel.Agency.Backend.model;
 
+import ee.gulho.travel.Travel.Agency.Backend.util.enums.Continent;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -12,8 +13,7 @@ public class Country {
     private String countryCode;
     @Column(nullable = false)
     private String name;
-    @ManyToOne
-    @JoinColumn(name = "continent_id")
+    @Enumerated
     private Continent continent;
     private String description;
 }
