@@ -17,11 +17,13 @@ public class CityController {
         return cityService.getAllCities();
     }
     @PostMapping
-    public void saveCity(@RequestBody City city) {
+    public boolean saveCity(@RequestBody City city) {
         cityService.saveCity(city);
+        return true;
     }
     @DeleteMapping("/{id}")
-    public void deleteCity(@PathVariable Integer cityId) {
-        cityService.deleteCity(cityId);
+    public boolean deleteCity(@PathVariable Integer id) {
+        cityService.deleteCity(id);
+        return true;
     }
 }
