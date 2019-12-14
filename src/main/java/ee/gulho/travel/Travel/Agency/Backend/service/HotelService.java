@@ -19,4 +19,12 @@ public class HotelService {
     public Hotel getHotelById(Integer hotel_id) {
         return hotelRepository.findById(hotel_id).orElse(new Hotel());
     }
+
+    public void saveHotel(Hotel hotel) {
+        hotelRepository.save(hotel);
+    }
+
+    public void deleteHotel(Integer id) {
+        hotelRepository.deleteById(id);
+    }
 }
