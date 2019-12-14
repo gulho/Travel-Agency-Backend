@@ -13,6 +13,7 @@ public class Trip {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String name;
     @ManyToOne
     @JoinColumn(name = "airport_from")
     private Airport from;
@@ -22,12 +23,12 @@ public class Trip {
     @ManyToOne
     @JoinColumn(name = "hotel_id")
     private Hotel hotel;
-    private LocalDate dateFrom;
-    private LocalDate dateTo;
+    private LocalDate fromDate;
+    private LocalDate toDate;
     @Enumerated
     private MealType mealType;
-    private BigDecimal price_for_adult;
-    private BigDecimal price_for_child;
+    private BigDecimal priceForAdult;
+    private BigDecimal priceForChild;
     private Integer adultBeds;
     private Integer childBeds;
     private Boolean isPromoted;

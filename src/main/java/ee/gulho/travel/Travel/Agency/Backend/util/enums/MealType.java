@@ -4,7 +4,6 @@ public enum MealType {
     RO,
     BB,
     HB,
-    HB_PLUS,
     FB,
     AI,
     UAI
