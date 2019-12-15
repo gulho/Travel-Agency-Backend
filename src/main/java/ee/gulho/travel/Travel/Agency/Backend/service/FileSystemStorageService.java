@@ -1,9 +1,10 @@
-package ee.gulho.travel.Travel.Agency.Backend.util;
+package ee.gulho.travel.Travel.Agency.Backend.service;
 
-import ee.gulho.travel.Travel.Agency.Backend.service.StorageService;
+import ee.gulho.travel.Travel.Agency.Backend.util.StorageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.io.Resource;
+import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -14,28 +15,27 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-
-public class FileSystemStorageService implements StorageService {
+@Service
+public class FileSystemStorageService {
     @Value("${images.upload.path}")
     private String storagePathString;
     private Path storagePath;
 
     @Autowired
     public FileSystemStorageService() {
-        this.storagePath = Paths.get(this.storagePathString);
+        System.out.println(this.storagePathString);
+        //this.storagePath = Paths.get(this.storagePathString);
     }
 
-    @Override
     @PostConstruct
     public void init() {
-        try {
+     /*   try {
             Files.createDirectories(this.storagePath);
         } catch (IOException ex) {
             throw new StorageException("Storage cant be initialized");
-        }
+        }*/
     }
 
-    @Override
     public String store(MultipartFile file) {
         String filename = StringUtils.cleanPath(file.getOriginalFilename());
         try {
@@ -60,17 +60,14 @@ public class FileSystemStorageService implements StorageService {
         return filename;
     }
 
-    @Override
     public Path load(String fileName) {
         return null;
     }
 
-    @Override
     public Resource loadAsResource(String fileName) {
         return null;
     }
 
-    @Override
     public void delete(String fileName) {
 
     }
