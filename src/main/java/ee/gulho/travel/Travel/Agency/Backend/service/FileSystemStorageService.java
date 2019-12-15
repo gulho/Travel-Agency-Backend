@@ -1,5 +1,6 @@
 package ee.gulho.travel.Travel.Agency.Backend.service;
 
+import ee.gulho.travel.Travel.Agency.Backend.config.StorageProperties;
 import ee.gulho.travel.Travel.Agency.Backend.util.StorageException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,23 +18,22 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 @Service
 public class FileSystemStorageService {
-    @Value("${images.upload.path}")
-    private String storagePathString;
+/*    @Value("${images.upload.path}")
+    private String storagePathString;*/
     private Path storagePath;
 
     @Autowired
-    public FileSystemStorageService() {
-        System.out.println(this.storagePathString);
-        //this.storagePath = Paths.get(this.storagePathString);
+    public FileSystemStorageService(StorageProperties storageProperties) {
+        this.storagePath = Paths.get(storageProperties.getLocation());
     }
 
     @PostConstruct
     public void init() {
-     /*   try {
+        try {
             Files.createDirectories(this.storagePath);
         } catch (IOException ex) {
             throw new StorageException("Storage cant be initialized");
-        }*/
+        }
     }
 
     public String store(MultipartFile file) {
