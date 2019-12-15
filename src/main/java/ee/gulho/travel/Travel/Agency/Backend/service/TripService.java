@@ -20,6 +20,10 @@ public class TripService {
         return tripRepository.findAllByIsPromotedTrue();
     }
 
+    public Trip getTripById(Integer id) {
+        return tripRepository.findById(id).orElseThrow();
+    }
+
     public void saveTrip(Trip trip) {
         tripRepository.save(trip);
     }

@@ -6,6 +6,7 @@ import lombok.Data;
 import javax.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Data
@@ -32,4 +33,6 @@ public class Trip {
     private Integer adultBeds;
     private Integer childBeds;
     private Boolean isPromoted;
+    @OneToMany(mappedBy = "trip")
+    private List<Image> images;
 }
