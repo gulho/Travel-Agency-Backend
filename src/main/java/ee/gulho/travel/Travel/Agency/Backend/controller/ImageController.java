@@ -25,7 +25,7 @@ public class ImageController {
     @PostMapping("/trip/{trip_id}")
     private boolean saveImage(@RequestParam("file") MultipartFile multipartFile) {
         String name = storageService.store(multipartFile);
-        
+
         return true;
     }
 }
