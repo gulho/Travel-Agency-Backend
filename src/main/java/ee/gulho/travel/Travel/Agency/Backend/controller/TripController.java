@@ -15,6 +15,7 @@ public class TripController {
 
     @GetMapping
     public List<Trip> getAllTrips() {
+        System.out.println(tripService.getAllTrips());
         return tripService.getAllTrips();
     }
 

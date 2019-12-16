@@ -18,8 +18,6 @@ import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 @Service
 public class FileSystemStorageService {
-/*    @Value("${images.upload.path}")
-    private String storagePathString;*/
     private Path storagePath;
 
     @Autowired
@@ -61,7 +59,7 @@ public class FileSystemStorageService {
     }
 
     public Path load(String fileName) {
-        return null;
+        return storagePath.resolve(fileName);
     }
 
     public Resource loadAsResource(String fileName) {
@@ -70,5 +68,9 @@ public class FileSystemStorageService {
 
     public void delete(String fileName) {
 
+    }
+
+    public Path getStoragePath() {
+        return storagePath;
     }
 }
